@@ -53,11 +53,16 @@ function App() {
 
   const [number1, setNumber1] = useState(0);
   const [number2, setNumber2] = useState(0);
-  const [total, setTotal] = useState(number1 / number2);
+  const [total, setTotal] = useState(number1 + number2);
 
   function calculateTotal() {
     setTotal(number1 / number2);
   }
+
+  //   var sampleNumber = total,
+  //   lastDigit = Number.isInteger(sampleNumber) ? sampleNumber % 10
+  //     : sampleNumber.toString().slice(-4);
+  // console.log('The last digit of ', sampleNumber, ' is ', lastDigit);
 
   return (
     <div className="container">
@@ -65,7 +70,10 @@ function App() {
         <h1 className="text-light"> Login Test</h1>
         <div className="row">
           <div className="col bg-box">
-            <img src={pictureUrl} style={{ width: "300px", borderRadius: "10px" }} />
+            <img
+              src={pictureUrl}
+              style={{ width: "300px", borderRadius: "10px" }}
+            />
             <p
               style={{
                 textAlign: "left",
@@ -122,6 +130,7 @@ function App() {
               </div>
               <div className="col-6">
                 <h3>{total}</h3>
+                {/* <h3>{lastDigit}</h3> */}
               </div>
               <div className="col"></div>
             </div>
