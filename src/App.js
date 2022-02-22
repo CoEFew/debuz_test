@@ -1,4 +1,5 @@
 import logo from "./logo.svg";
+// import React from "react";
 import "./App.css";
 import liff from "@line/liff";
 import { useEffect, useState } from "react";
@@ -50,13 +51,21 @@ function App() {
     initLine();
   }, []);
 
+  const [number1, setNumber1] = useState(0);
+  const [number2, setNumber2] = useState(0);
+  const [total, setTotal] = useState(number1 / number2);
+
+  function calculateTotal() {
+    setTotal(number1 / number2);
+  }
+
   return (
     <div className="container">
       <div style={{ textAlign: "center" }}>
         <h1 className="text-light"> Login Test</h1>
         <div className="row">
           <div className="col bg-box">
-            <img src={pictureUrl} style={{ width: "300px" }} />
+            <img src={pictureUrl} style={{ width: "300px", borderRadius: "10px" }} />
             <p
               style={{
                 textAlign: "left",
@@ -74,7 +83,14 @@ function App() {
                 <h4 style={{ color: "#F87B40 " }}>ตัวตั้ง :</h4>
               </div>
               <div className="col-6">
-                <input className="w-100 rounded" style={{ borderColor: "#F87B40 " }} type="number" name="name" />
+                <input
+                  className="w-100 rounded"
+                  style={{ borderColor: "#F87B40 " }}
+                  type="number"
+                  value={number1}
+                  onChange={(e) => setNumber1(+e.target.value)}
+                  placeholder="0"
+                />
               </div>
               <div className="col"></div>
             </div>
@@ -83,16 +99,29 @@ function App() {
                 <h4 style={{ color: "#F87B40 " }}>ตัวหาร :</h4>
               </div>
               <div className="col-6">
-              <input className="w-100 rounded" style={{ borderColor: "#F87B40 " }} type="number" name="name" />
+                <input
+                  className="w-100 rounded"
+                  style={{ borderColor: "#F87B40 " }}
+                  type="number"
+                  value={number2}
+                  onChange={(e) => setNumber2(+e.target.value)}
+                  placeholder="0"
+                />
               </div>
               <div className="col"></div>
             </div>
             <div className="row">
               <div className="col-4 text-end">
-                <h4 style={{ color: "#F87B40 " }}>ผลลัพธ์ :</h4>
+                <button
+                  className="btn text-light"
+                  style={{ background: "#F87B40 " }}
+                  onClick={calculateTotal}
+                >
+                  ผลลัพธ์
+                </button>
               </div>
               <div className="col-6">
-              <h3>ผลหาร</h3>
+                <h3>{total}</h3>
               </div>
               <div className="col"></div>
             </div>
